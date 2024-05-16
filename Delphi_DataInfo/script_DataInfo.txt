@@ -1,0 +1,46 @@
+/* base de dados SQLServer */
+/* criacao das tabelas */
+create table PROVAS ( COD_PROVA INTEGER not null,NOM_PROVA varchar(30) not null, TIP_PROVA varchar(1),
+constraint pk_provas primary key (COD_PROVA));
+
+CREATE TABLE CIDADES ( COD_CIDADE INTEGER NOT NULL, NOM_CIDADE VARCHAR(20),
+CONSTRAINT PK_CIDADES PRIMARY KEY ( COD_CIDADE) );
+
+CREATE TABLE MARCAS ( COD_ATLETA INTEGER NOT NULL, NOM_ATLETA VARCHAR(40),COD_CIDADE INTEGER,COD_PROVA INTEGER, MARCA NUMERIC(8,4))
+
+/* importacao dos arquivos textos */
+/* criacao de tabela auxiliar */
+create table provas_bulk ( prova varchar(50))
+/* importacao */
+BULK INSERT PROVAS_bulk
+FROM 'C:\Users\marce\Downloads\TesteProgramacao31\PROVAS.TXT'
+WITH (CODEPAGE='ACP')
+/* inclusao tabela provas */
+insert into provas ( cod_prova , nom_prova, tip_prova )
+select substring(prova,1,3) cod_prova,substring(prova,4,30) nome,substring(prova,34,1) tp from provas_bulk
+update provas set nom_prova = trim(nom_prova)
+
+/* cidades */
+create table cidades_bulk ( cidade varchar(50))
+/* importacao */
+BULK INSERT CIDADES_bulk
+FROM 'C:\Users\marce\Downloads\TesteProgramacao31\CIDADES.TXT'
+WITH (CODEPAGE='ACP')
+/* inclusao tabela cidades */
+insert into cidades ( COD_CIDADE , NOM_CIDADE )
+select substring(cidade,1,2) cod_cidade,substring(cidade,3,30) nome from cidades_bulk
+update cidades set nom_cidade = trim(nom_cidade)
+
+/* marcas */
+create table marcas_bulk ( marca varchar(100))
+/* importacao */
+BULK INSERT MARCAS_bulk
+FROM 'C:\Users\marce\Downloads\TesteProgramacao31\MARCAS.TXT'
+WITH (CODEPAGE='ACP')
+/* inclusao tabela marcas */
+insert into marcas ( COD_ATLETA , NOM_ATLETA ,COD_CIDADE , COD_PROVA , MARCA )
+select substring(marca,1,5) COD_ATLETA,substring(marca,6,40) NOM_ATLETA , substring(marca,46,2) COD_CIDADE , substring(marca,48,3) COD_PROVA
+,replace(substring(marca,51,10),',','.') marca from marcas_bulk
+update marcas set nom_atleta = trim(nom_atleta)
+/* tabela de classificacao */
+create table class_prova ( cod_prova integer, cod_atleta integer, nom_atleta varchar(40), cod_cidade integer, marca numeric(8,4), posicao integer )

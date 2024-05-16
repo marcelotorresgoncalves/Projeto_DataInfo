@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/05/16 10:06:32.000.749,=C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/05/16 10:07:35.000.386,C:\Delphi_DataInfo\View\uFrmClassificacao.pas=C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/05/16 10:07:35.000.386,C:\Delphi_DataInfo\View\uFrmClassificacao.dfm=C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/05/16 10:07:47.000.538,C:\Delphi_DataInfo\View\Proj_DataInfo.dproj=C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/05/16 10:08:56.000.106,=C:\Delphi_DataInfo\Dao\udmConexao.pas</Transaction>
+  </Transactions>
+</BorlandProject>

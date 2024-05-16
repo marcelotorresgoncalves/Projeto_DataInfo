@@ -1,0 +1,1 @@
+Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;User ID=LAPTOP-98V7P5IQ\marc;Initial Catalog=BD_DATAINFO;Data Source=LAPTOP-98V7P5IQ;
